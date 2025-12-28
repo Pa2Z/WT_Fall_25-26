@@ -74,6 +74,19 @@
       color: #6b6b7a;
       font-size: 0.95rem;
     }
+    .survey-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.survey-item {
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #eee;
+}
+
   </style>
 </head>
 
@@ -94,7 +107,7 @@
     <div class="card">
       <h2>Available Surveys</h2>
       <div class="muted">Surveys posted by other participants.</div>
-      <!-- Inside Available Surveys card -->
+
 <ul class="survey-list">
   <li class="survey-item"></li>
 </ul>
