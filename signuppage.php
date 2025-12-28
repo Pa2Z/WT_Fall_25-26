@@ -78,6 +78,33 @@
       border: 1px solid #e8e6ff;
       font-size: 14px;
     }
+
+    .actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    button {
+      padding: 10px 16px;
+      border-radius: 6px;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid #ddd;
+      color: #6c5ce7;
+    }
+
+    .btn-primary {
+      background: #6c5ce7;
+      color: white;
+    }
   </style>
 </head>
 
@@ -109,7 +136,10 @@
       <label>Confirm Password</label>
       <input type="password" name="confirm_password">
 
-      <button type="submit">Sign Up</button>
+      <div class="actions">
+        <button type="reset" class="btn-secondary">Discard</button>
+        <button type="submit" class="btn-primary">Sign Up</button>
+      </div>
 
     </form>
 
