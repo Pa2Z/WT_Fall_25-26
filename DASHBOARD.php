@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <style>
+    * { box-sizing: border-box; }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -45,18 +47,12 @@
       color: #5b3dd3;
     }
 
-    .welcome {
-      color: #6b6b7a;
-      font-weight: 600;
-    }
-
     main {
       width: 1100px;
       max-width: 95%;
       margin: 20px auto;
       display: flex;
       gap: 16px;
-      align-items: flex-start;
     }
 
     .left-col { flex: 1; }
@@ -70,35 +66,31 @@
       margin-bottom: 16px;
     }
 
-    .muted {
-      color: #6b6b7a;
-      font-size: 0.95rem;
+    .survey-item {
+      display: flex;
+      gap: 12px;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid #eee;
+      margin-bottom: 10px;
+      transition: background 0.2s;
     }
-    .survey-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.survey-item {
-  display: flex;
-  gap: 12px;
-  padding: 12px;
-  border-radius: 10px;
-  border: 1px solid #eee;
-}
 
+    .survey-item:hover {
+      background: #f3f1ff;
+      cursor: pointer;
+    }
   </style>
 </head>
 
 <body>
-
 <header>
   <div class="nav">
     <div class="brand">
       <div class="logo"></div>
       <div class="site-name">NeedSurveyResponses</div>
     </div>
-    <div class="welcome">Welcome Student</div>
+    <div>Welcome Student</div>
   </div>
 </header>
 
@@ -106,16 +98,22 @@
   <div class="left-col">
     <div class="card">
       <h2>Available Surveys</h2>
-      <div class="muted">Surveys posted by other participants.</div>
 
-<ul class="survey-list">
-  <li class="survey-item"></li>
-</ul>
-
+      <div class="survey-item">
+        <div>
+          <b>Digital Learning Adaptation</b>
+          <div>Student adjustment trends</div>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="right-col"></div>
-</main>
 
+  <div class="right-col">
+    <div class="card">
+      <h2>Submit Survey</h2>
+      <input type="text" placeholder="Title">
+    </div>
+  </div>
+</main>
 </body>
 </html>
