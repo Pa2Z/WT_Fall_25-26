@@ -126,6 +126,10 @@
   <div>Responses: 7 / 10</div>
   <div>Time: 2 min</div>
 </div>
+<div class="card">
+  <h2>My Surveys (Quick)</h2>
+  <div class="muted">Surveys created by you.</div>
+</div>
 </main>
 </body>
 </html>
