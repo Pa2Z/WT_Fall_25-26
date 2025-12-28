@@ -13,6 +13,7 @@
       margin: 0;
       font-family: Arial, sans-serif;
       background: #f4f6fb;
+      color: #222;
     }
 
     header {
@@ -61,6 +62,21 @@
     h1 {
       text-align: center;
       margin-bottom: 24px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 14px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 16px;
+      border-radius: 6px;
+      border: 1px solid #e8e6ff;
+      font-size: 14px;
     }
   </style>
 </head>
