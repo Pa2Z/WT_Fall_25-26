@@ -1,3 +1,69 @@
+<?php
+$name = $email = $password = $confirm_password = "";
+$nameErr = $emailErr = $passwordErr = $confirmErr = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    /* NAME */
+    if (empty($_POST["fullname"])) {
+        $nameErr = "Name is required";
+    } else {
+        $name = $_POST["fullname"];
+    }
+
+    /* EMAIL */
+    if (empty($_POST["email"])) {
+        $emailErr = "Email is required";
+    } else {
+        $email = $_POST["email"];
+    }
+
+    /* PASSWORD */
+    if (empty($_POST["password"])) {
+        $passwordErr = "Password is required";
+    } else {
+        $password = $_POST["password"];
+
+        if (strlen($password) < 8) {
+            $passwordErr = "Password must be at least 8 characters";
+        }
+        else if (!preg_match("/[a-z]/", $password)) {
+            $passwordErr = "Password must contain at least 1 lowercase letter";
+        }
+        else if (!preg_match("/[A-Z]/", $password)) {
+            $passwordErr = "Password must contain at least 1 uppercase letter";
+        }
+        else if (!preg_match("/[0-9]/", $password)) {
+            $passwordErr = "Password must contain at least 1 number";
+        }
+        else if (!preg_match("/[\W]/", $password)) {
+            $passwordErr = "Password must contain at least 1 special character";
+        }
+    }
+
+    /* CONFIRM PASSWORD */
+    if (empty($_POST["confirm_password"])) {
+        $confirmErr = "Confirm password is required";
+    } else {
+        $confirm_password = $_POST["confirm_password"];
+        if ($password != $confirm_password) {
+            $confirmErr = "Passwords do not match";
+        }
+    }
+
+    /* SUCCESS → REDIRECT TO DASHBOARD */
+    if (
+        empty($nameErr) &&
+        empty($emailErr) &&
+        empty($passwordErr) &&
+        empty($confirmErr)
+    ) {
+        header("Location: dashboard.php");
+        exit();
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,9 +71,7 @@
   <title>NeedSurveyResponses - Sign Up</title>
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -66,17 +130,30 @@
 
     label {
       display: block;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
       font-size: 14px;
     }
 
     input {
       width: 100%;
       padding: 10px;
-      margin-bottom: 16px;
+      margin-bottom: 6px;
       border-radius: 6px;
       border: 1px solid #e8e6ff;
       font-size: 14px;
+    }
+
+    .password-info {
+      font-size: 12.5px;
+      color: #555;
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+
+    .error {
+      color: red;
+      font-size: 13px;
+      margin-bottom: 10px;
     }
 
     .actions {
@@ -122,19 +199,32 @@
 
     <h1>Create an account</h1>
 
-    <form method="post" action="signup.php">
+    <form method="post" action="">
 
       <label>Full Name</label>
-      <input type="text" name="fullname">
+      <input type="text" name="fullname" value="<?php echo $name; ?>">
+      <div class="error"><?php echo $nameErr; ?></div>
 
       <label>Email Address</label>
-      <input type="email" name="email">
+      <input type="text" name="email" value="<?php echo $email; ?>">
+      <div class="error"><?php echo $emailErr; ?></div>
 
       <label>Password</label>
       <input type="password" name="password">
 
+      <div class="password-info">
+        • Minimum 8 characters<br>
+        • At least 1 lowercase letter<br>
+        • At least 1 uppercase letter<br>
+        • At least 1 number<br>
+        • At least 1 special symbol
+      </div>
+
+      <div class="error"><?php echo $passwordErr; ?></div>
+
       <label>Confirm Password</label>
       <input type="password" name="confirm_password">
+      <div class="error"><?php echo $confirmErr; ?></div>
 
       <div class="actions">
         <button type="reset" class="btn-secondary">Discard</button>
