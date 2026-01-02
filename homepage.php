@@ -5,9 +5,7 @@
   <title>NeedSurveyResponses</title>
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -16,7 +14,6 @@
       color: #222;
     }
 
-    /* HEADER */
     header {
       background: #ffffff;
       border-bottom: 1px solid #e6e6f0;
@@ -58,7 +55,6 @@
       color: #6c5ce7;
     }
 
-    /* HERO SECTION */
     main {
       width: 1100px;
       max-width: 95%;
@@ -75,7 +71,6 @@
       font-size: 36px;
       margin-bottom: 16px;
       color: #2d2a55;
-      letter-spacing: 0.5px;
       font-weight: bold;
     }
 
@@ -117,7 +112,6 @@
       background: transparent;
     }
 
-    /* FEATURES */
     .features {
       width: 1100px;
       max-width: 95%;
@@ -144,7 +138,6 @@
       line-height: 1.5;
     }
 
-    /* FOOTER */
     footer {
       text-align: center;
       padding: 20px;
@@ -165,7 +158,7 @@
 
     <div class="nav-actions">
       <a href="signin.html">Sign In</a>
-      <a href="signup.html">Sign Up</a>
+      <a href="signuppage.php">Sign Up</a>
     </div>
   </div>
 </header>
@@ -189,7 +182,7 @@
     </p>
 
     <div class="hero-buttons">
-      <a href="signup.html" class="btn-primary">Get Started</a>
+      <a href="signuppage.php" class="btn-primary">Get Started</a>
       <a href="signin.html" class="btn-secondary">Sign In</a>
     </div>
   </div>
