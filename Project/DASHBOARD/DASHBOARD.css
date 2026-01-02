@@ -148,3 +148,33 @@
       border: 1px solid #ddd;
       color: #6c5ce7;
     }
+/* ===== CREDIT SECTION ===== */
+
+.credit-box {
+  margin-top: 20px;
+}
+
+.credit-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.credit-text {
+  font-size: 16px;
+  font-weight: bold;
+  color: #444;
+}
+
+.transfer-btn {
+  background-color: #6c5ce7;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.transfer-btn:hover {
+  opacity: 0.9;
+}

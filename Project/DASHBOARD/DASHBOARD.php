@@ -1,5 +1,13 @@
 <?php
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header("Location: ../Userlogin/userlogin.php");
+    exit();
+}
+
 include "../config.php";
+
+/* ================= SUBMIT SURVEY ================= */
 
 $error = "";
 $success = "";
@@ -36,6 +44,7 @@ if (isset($_POST['publish'])) {
     }
 }
 
+/* ================= FETCH MY SURVEYS ================= */
 
 $my_surveys_res = mysqli_query($conn, "SELECT * FROM surveys ORDER BY id DESC");
 ?>
@@ -44,7 +53,7 @@ $my_surveys_res = mysqli_query($conn, "SELECT * FROM surveys ORDER BY id DESC");
 <html>
 <head>
   <title>NeedSurveyResponses — Dashboard</title>
-  <link rel="stylesheet" href="DASHBOARD.css"> 
+  <link rel="stylesheet" href="DASHBOARD.css">
 </head>
 
 <body>
@@ -66,6 +75,8 @@ $my_surveys_res = mysqli_query($conn, "SELECT * FROM surveys ORDER BY id DESC");
 
   <div class="left-col">
 
+    <!-- ===== AVAILABLE SURVEYS (UNCHANGED) ===== -->
+
     <div class="card">
       <h2>Available Surveys</h2>
       <div class="muted">Surveys posted by other participants.</div>
@@ -79,7 +90,7 @@ $my_surveys_res = mysqli_query($conn, "SELECT * FROM surveys ORDER BY id DESC");
                 An Analytical Study on Digital Learning Adaptation
               </a>
             </div>
-            <small class="muted">Exploring student adjustment trends</small>
+            <div class="muted">Exploring student adjustment trends</div>
           </div>
           <div class="survey-right">
             <div>12 Q • Open</div>
@@ -92,7 +103,7 @@ $my_surveys_res = mysqli_query($conn, "SELECT * FROM surveys ORDER BY id DESC");
         <li class="survey-item">
           <div class="survey-left">
             <div class="survey-title">Investigating Cognitive Load in Remote Education</div>
-            <small class="muted">Measuring task complexity factors</small>
+            <div class="muted">Measuring task complexity factors</div>
           </div>
           <div class="survey-right">
             <div>10 Q • Open</div>
@@ -105,7 +116,7 @@ $my_surveys_res = mysqli_query($conn, "SELECT * FROM surveys ORDER BY id DESC");
         <li class="survey-item">
           <div class="survey-left">
             <div class="survey-title">Evaluating Usability Metrics of Academic Platforms</div>
-            <small class="muted">User experience indicators</small>
+            <div class="muted">User experience indicators</div>
           </div>
           <div class="survey-right">
             <div>8 Q • Closed</div>
@@ -118,44 +129,47 @@ $my_surveys_res = mysqli_query($conn, "SELECT * FROM surveys ORDER BY id DESC");
       </ul>
     </div>
 
+    <!-- ===== MY SURVEYS (DYNAMIC) ===== -->
 
     <div class="card">
       <h2>My Surveys</h2>
       <div class="muted">Surveys created by you.</div>
 
       <ul class="survey-list">
-
         <?php
         if (mysqli_num_rows($my_surveys_res) > 0) {
             while ($row = mysqli_fetch_assoc($my_surveys_res)) {
 
                 echo '<li class="survey-item">';
-                echo '  <div class="survey-left">';
-                echo '    <div class="survey-title">' . htmlspecialchars($row['title']) . '</div>';
-                echo '    <small class="muted">' . htmlspecialchars($row['subtitle']) . '</small>';
-                echo '  </div>';
-                echo '  <div class="survey-right">';
-                echo '    <div>Open</div>';
-                echo '    <div>Credits: ' . $row['credit'] . '</div>';
-                echo '    <div>Responses: 0 / ' . $row['max_responses'] . '</div>';
-                echo '    <div>Time: ' . $row['time_minutes'] . ' min</div>';
-                echo '  </div>';
+                echo '<div class="survey-left">';
+                echo '<div class="survey-title">' . htmlspecialchars($row['title']) . '</div>';
+                echo '<div class="muted">' . htmlspecialchars($row['subtitle']) . '</div>';
+                echo '</div>';
+                echo '<div class="survey-right">';
+                echo '<div>Open</div>';
+                echo '<div>Credits: ' . $row['credit'] . '</div>';
+                echo '<div>Responses: 0 / ' . $row['max_responses'] . '</div>';
+                echo '<div>Time: ' . $row['time_minutes'] . ' min</div>';
+                echo '</div>';
                 echo '</li>';
             }
         } else {
             echo '<li class="survey-item">';
-            echo '<div class="survey-left"><small class="muted">No surveys created yet</small></div>';
+            echo '<div class="survey-left"><div class="muted">No surveys created yet</div></div>';
             echo '</li>';
         }
         ?>
-
       </ul>
     </div>
 
   </div>
 
+  <!-- ===== RIGHT COLUMN ===== -->
 
   <div class="right-col">
+
+    <!-- ===== SUBMIT SURVEY ===== -->
+
     <div class="card">
       <h2>Submit Survey</h2>
       <div class="muted">Use this section to post your own survey.</div>
@@ -190,6 +204,20 @@ $my_surveys_res = mysqli_query($conn, "SELECT * FROM surveys ORDER BY id DESC");
 
       </form>
     </div>
+
+    <!-- ===== TOTAL CREDITS SECTION ===== -->
+
+    <div class="card credit-box">
+      <div class="credit-row">
+        <div class="credit-text">
+          Total Credits: 20
+        </div>
+        <button class="btn transfer-btn">
+          Transfer Credits
+        </button>
+      </div>
+    </div>
+
   </div>
 
 </main>
