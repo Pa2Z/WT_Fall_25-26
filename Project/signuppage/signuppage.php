@@ -7,21 +7,16 @@ $nameErr = $emailErr = $passwordErr = $confirmErr = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    /* NAME */
     if (empty($_POST["fullname"])) {
         $nameErr = "Name is required";
     } else {
         $name = trim($_POST["fullname"]);
     }
-
-    /* EMAIL */
     if (empty($_POST["email"])) {
         $emailErr = "Email is required";
     } else {
         $email = trim($_POST["email"]);
     }
-
-    /* PASSWORD */
     if (empty($_POST["password"])) {
         $passwordErr = "Password is required";
     } else {
@@ -40,7 +35,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    /* CONFIRM PASSWORD */
     if (empty($_POST["confirm_password"])) {
         $confirmErr = "Confirm password is required";
     } else {
@@ -50,7 +44,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    /* INSERT INTO DATABASE */
     if (
         empty($nameErr) &&
         empty($emailErr) &&
@@ -63,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 VALUES ('$name', '$email', '$hashedPassword')";
 
         if (mysqli_query($conn, $sql)) {
-            header("Location: dashboard.php");
+            header("Location: ../DASHBOARD/DASHBOARD.php");
             exit();
         } else {
             $emailErr = "Email already exists";
@@ -75,121 +68,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
 <title>NeedSurveyResponses - Sign Up</title>
-
-<style>
-* { box-sizing: border-box; }
-
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f4f6fb;
-}
-
-header {
-  background: #ffffff;
-  border-bottom: 1px solid #e6e6f0;
-  padding: 16px 0;
-}
-
-.nav {
-  width: 900px;
-  max-width: 95%;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.logo {
-  width: 42px;
-  height: 42px;
-  background: #6c5ce7;
-  border-radius: 8px;
-}
-
-.site-name {
-  font-size: 18px;
-  font-weight: bold;
-  color: #5b3dd3;
-}
-
-main {
-  display: flex;
-  justify-content: center;
-  padding: 40px 15px;
-}
-
-.card {
-  width: 100%;
-  max-width: 520px;
-  background: #ffffff;
-  padding: 28px;
-  border-radius: 8px;
-  box-shadow: 0 8px 20px rgba(92, 61, 196, 0.08);
-}
-
-h1 {
-  text-align: center;
-  margin-bottom: 24px;
-}
-
-label {
-  display: block;
-  margin-bottom: 4px;
-  font-size: 14px;
-}
-
-input[type="text"],
-input[type="password"] {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 6px;
-  border-radius: 6px;
-  border: 1px solid #e8e6ff;
-}
-
-.password-info {
-  font-size: 12px;
-  color: #555;
-  margin-bottom: 8px;
-}
-
-.error {
-  color: red;
-  font-size: 13px;
-  margin-bottom: 10px;
-}
-
-.show-pass {
-  font-size: 13px;
-  margin-bottom: 10px;
-}
-
-.actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-}
-
-button {
-  padding: 10px 16px;
-  border-radius: 6px;
-  border: none;
-  font-weight: bold;
-}
-
-.btn-secondary {
-  background: transparent;
-  border: 1px solid #ddd;
-}
-
-.btn-primary {
-  background: #6c5ce7;
-  color: white;
-}
-</style>
+<link rel="stylesheet" href="signuppage.css"> 
 
 <script>
 function togglePassword() {
@@ -252,7 +132,7 @@ function togglePassword() {
 </div>
 
 <div class="actions">
-<button type="reset" class="btn-secondary">Discard</button>
+<button type="reset" class="btn-secondary"><a href="../Homepage/Homepage.php">Discard</button>
 <button type="submit" class="btn-primary">Sign Up</button>
 </div>
 
