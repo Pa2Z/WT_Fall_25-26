@@ -1,3 +1,42 @@
+<?php
+include "../config.php";
+
+$error = "";
+$success = "";
+
+if (isset($_POST['publish'])) {
+
+    $title = $_POST['title'];
+    $subtitle = $_POST['subtitle'];
+    $form_link = $_POST['form_link'];
+    $credit = $_POST['credit'];
+    $max_responses = $_POST['max_responses'];
+    $time_minutes = $_POST['time_minutes'];
+
+    if (
+        empty($title) ||
+        empty($form_link) ||
+        empty($credit) ||
+        empty($max_responses) ||
+        empty($time_minutes)
+    ) {
+        $error = "All required fields must be filled";
+    } else {
+
+        $sql = "INSERT INTO surveys
+                (title, subtitle, form_link, credit, max_responses, time_minutes)
+                VALUES
+                ('$title', '$subtitle', '$form_link', '$credit', '$max_responses', '$time_minutes')";
+
+        if (mysqli_query($conn, $sql)) {
+            $success = "Survey published successfully";
+        } else {
+            $error = "Database error";
+        }
+    }
+}
+?>
+
 <!doctype html>
 <html>
 <head>
@@ -14,15 +53,16 @@
       <div class="site-name">NeedSurveyResponses</div>
     </div>
     <div class="welcome">
-  Welcome Student |
-  <a href="../Userlogin/userlogin.php" style="text-decoration:none; color:inherit;">Logout</a>
-</div>
-
+      Welcome Student |
+      <a href="../Userlogin/userlogin.php" style="text-decoration:none; color:inherit;">Logout</a>
+    </div>
   </div>
 </header>
 
 <main>
+
   <div class="left-col">
+
     <div class="card">
       <h2>Available Surveys</h2>
       <div class="muted">Surveys posted by other participants.</div>
@@ -46,6 +86,7 @@
           </div>
         </li>
 
+        <!-- RESTORED ITEM -->
         <li class="survey-item">
           <div class="survey-left">
             <div class="survey-title">Investigating Cognitive Load in Remote Education</div>
@@ -59,6 +100,7 @@
           </div>
         </li>
 
+        <!-- RESTORED ITEM -->
         <li class="survey-item">
           <div class="survey-left">
             <div class="survey-title">Evaluating Usability Metrics of Academic Platforms</div>
@@ -102,28 +144,35 @@
       <h2>Submit Survey</h2>
       <div class="muted">Use this section to post your own survey.</div>
 
-      <label>Title</label>
-      <input type="text">
+      <form method="post">
 
-      <label>Subtitle</label>
-      <input type="text">
+        <label>Title</label>
+        <input type="text" name="title">
 
-      <label>Google Form link</label>
-      <input type="text">
+        <label>Subtitle</label>
+        <input type="text" name="subtitle">
 
-      <label>Credit</label>
-      <input type="number">
+        <label>Google Form link</label>
+        <input type="text" name="form_link">
 
-      <label>Responses Needed</label>
-      <input type="number">
+        <label>Credit</label>
+        <input type="number" name="credit">
 
-      <label>Time (minutes)</label>
-      <input type="number">
+        <label>Responses Needed</label>
+        <input type="number" name="max_responses">
 
-      <div class="actions">
-        <button class="btn ghost">Discard</button>
-        <button class="btn primary">Publish</button>
-      </div>
+        <label>Time (minutes)</label>
+        <input type="number" name="time_minutes">
+
+        <div style="color:red;"><?php echo $error; ?></div>
+        <div style="color:green;"><?php echo $success; ?></div>
+
+        <div class="actions">
+          <button type="reset" class="btn ghost">Discard</button>
+          <button type="submit" name="publish" class="btn primary">Publish</button>
+        </div>
+
+      </form>
     </div>
   </div>
 
