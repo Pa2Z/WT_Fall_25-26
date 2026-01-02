@@ -166,7 +166,7 @@
     </div>
     <div class="welcome">
   Welcome Student |
-  <a href="logout.php" style="text-decoration:none; color:inherit;">Logout</a>
+  <a href="userlogin.php" style="text-decoration:none; color:inherit;">Logout</a>
 </div>
 
   </div>
