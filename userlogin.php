@@ -105,6 +105,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       font-size: 14px;
     }
 
+    .error {
+      color: red;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    .success {
+      color: green;
+      font-size: 14px;
+      text-align: center;
+      margin-bottom: 12px;
+      font-weight: bold;
+    }
+
     .actions {
       display: flex;
       justify-content: space-between;
@@ -158,26 +172,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <h1>Sign In</h1>
 
+    <?php if ($loginMsg != "") { ?>
+      <div class="success"><?php echo $loginMsg; ?></div>
+    <?php } ?>
+
     <form method="post" action="">
 
       <label>Email Address</label>
       <input type="text" name="email" value="<?php echo $email; ?>">
+      <div class="error"><?php echo $emailErr; ?></div>
 
       <label>Password</label>
       <input type="password" name="password">
+      <div class="error"><?php echo $passwordErr; ?></div>
 
       <div class="actions">
         <div class="forgot">
           <a href="#">Forgot password?</a>
         </div>
-        <button type="submit">Login</button>
+        <button type="submit"><a href="DASHBOARD.php">Login</a></button>
       </div>
 
     </form>
 
     <div class="extra">
       Don’t have an account?
-      <a href="signuppage.php">Sign Up</a>
+      <a href="signup.php">Sign Up</a>
     </div>
 
   </div>
