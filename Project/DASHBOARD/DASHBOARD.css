@@ -1,0 +1,150 @@
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f3fb;
+      color: #0b1020;
+    }
+
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid #e9e9ef;
+      padding: 14px 0;
+    }
+
+    .nav {
+      width: 1100px;
+      max-width: 95%;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo {
+      width: 38px;
+      height: 38px;
+      background: #6c5ce7;
+      border-radius: 6px;
+    }
+
+    .site-name {
+      font-weight: bold;
+      font-size: 1.05rem;
+      color: #5b3dd3;
+    }
+
+    .welcome {
+      color: #6b6b7a;
+      font-weight: 600;
+    }
+
+    main {
+      width: 1100px;
+      max-width: 95%;
+      margin: 20px auto;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .left-col { flex: 1; }
+    .right-col { width: 340px; }
+
+    .card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 14px;
+      box-shadow: 0 8px 20px rgba(92,61,196,0.08);
+      margin-bottom: 16px;
+    }
+
+    .card h2 {
+      margin: 0 0 6px 0;
+      font-size: 1.05rem;
+    }
+
+    .muted {
+      color: #6b6b7a;
+      font-size: 0.95rem;
+      margin-bottom: 12px;
+    }
+
+    .survey-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .survey-item {
+      display: flex;
+      gap: 12px;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid #eee;
+      margin-bottom: 10px;
+      align-items: flex-start;
+    }
+
+    .survey-left { flex: 1; }
+
+    .survey-title {
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .survey-right {
+      text-align: right;
+      font-size: 0.85rem;
+      color: #6b6b7a;
+      line-height: 1.5;
+      min-width: 140px;
+    }
+
+    label {
+      display: block;
+      margin-top: 8px;
+      font-size: 0.9rem;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 4px;
+      border-radius: 6px;
+      border: 1px solid #e8e6ff;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .btn {
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn.primary {
+      background: #6c5ce7;
+      color: white;
+    }
+
+    .btn.ghost {
+      background: transparent;
+      border: 1px solid #ddd;
+      color: #6c5ce7;
+    }
