@@ -7,8 +7,6 @@ if (!isset($_SESSION['user_id'])) {
 
 include "../config.php";
 
-/* ================= SUBMIT SURVEY ================= */
-
 $error = "";
 $success = "";
 
@@ -44,8 +42,6 @@ if (isset($_POST['publish'])) {
     }
 }
 
-/* ================= FETCH MY SURVEYS ================= */
-
 $my_surveys_res = mysqli_query($conn, "SELECT * FROM surveys ORDER BY id DESC");
 ?>
 
@@ -74,9 +70,6 @@ $my_surveys_res = mysqli_query($conn, "SELECT * FROM surveys ORDER BY id DESC");
 <main>
 
   <div class="left-col">
-
-    <!-- ===== AVAILABLE SURVEYS (UNCHANGED) ===== -->
-
     <div class="card">
       <h2>Available Surveys</h2>
       <div class="muted">Surveys posted by other participants.</div>
@@ -128,9 +121,6 @@ $my_surveys_res = mysqli_query($conn, "SELECT * FROM surveys ORDER BY id DESC");
 
       </ul>
     </div>
-
-    <!-- ===== MY SURVEYS (DYNAMIC) ===== -->
-
     <div class="card">
       <h2>My Surveys</h2>
       <div class="muted">Surveys created by you.</div>
@@ -164,11 +154,8 @@ $my_surveys_res = mysqli_query($conn, "SELECT * FROM surveys ORDER BY id DESC");
 
   </div>
 
-  <!-- ===== RIGHT COLUMN ===== -->
 
   <div class="right-col">
-
-    <!-- ===== SUBMIT SURVEY ===== -->
 
     <div class="card">
       <h2>Submit Survey</h2>
@@ -204,8 +191,6 @@ $my_surveys_res = mysqli_query($conn, "SELECT * FROM surveys ORDER BY id DESC");
 
       </form>
     </div>
-
-    <!-- ===== TOTAL CREDITS SECTION ===== -->
 
     <div class="card credit-box">
       <div class="credit-row">
