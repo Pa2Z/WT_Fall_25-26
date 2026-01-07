@@ -8,11 +8,9 @@ if (!isset($_SESSION['user_id'])) {
 include "../db.php";
 
 $uid = $_SESSION['user_id'];
-
 $error = "";
 $success = "";
 
-/* ===== SUBMIT SURVEY ===== */
 if (isset($_POST['publish'])) {
 
     $title = $_POST['title'];
@@ -45,7 +43,6 @@ if (isset($_POST['publish'])) {
     }
 }
 
-/* ===== FETCH SURVEYS ===== */
 $my_surveys_res = mysqli_query(
     $conn,
     "SELECT * FROM surveys WHERE user_id = $uid ORDER BY id DESC"
@@ -66,31 +63,27 @@ $available_surveys_res = mysqli_query(
 
 <body>
 
-<header> 
-<button id="btn">← Back</button>
-<h2>NeedSurveyResponses</h2>
+<header>
+  <button id="btn">← Back</button>
+  <h2>NeedSurveyResponses</h2>
+
+  <a href="../Userlogin/userlogin.php" id="logout">Logout</a>
 </header>
 
 <main>
 
   <div class="left-col">
 
-    <!-- ================= AVAILABLE SURVEYS ================= -->
     <div class="card">
       <h2>Available Surveys</h2>
       <div class="muted">Surveys posted by other participants.</div>
 
       <ul class="survey-list">
 
-        <!-- ===== DEFAULT SURVEYS (ALWAYS VISIBLE) ===== -->
-
+        <!-- DEFAULT SURVEYS -->
         <li class="survey-item">
           <div class="survey-left">
-            <div class="survey-title">
-              <a href="../Surveyviewpage/surveyviewpage.php" style="color: inherit; text-decoration: none;">
-                An Analytical Study on Digital Learning Adaptation
-              </a>
-            </div>
+            <div class="survey-title">An Analytical Study on Digital Learning Adaptation</div>
             <div class="muted">Exploring student adjustment trends</div>
           </div>
           <div class="survey-right">
@@ -127,32 +120,25 @@ $available_surveys_res = mysqli_query(
           </div>
         </li>
 
-        <!-- ===== DYNAMIC AVAILABLE SURVEYS (FROM OTHER USERS) ===== -->
-
         <?php
-        if (mysqli_num_rows($available_surveys_res) > 0) {
-            while ($row = mysqli_fetch_assoc($available_surveys_res)) {
-
-                echo '<li class="survey-item">';
-                echo '<div class="survey-left">';
-                echo '<div class="survey-title">' . htmlspecialchars($row['title']) . '</div>';
-                echo '<div class="muted">' . htmlspecialchars($row['subtitle']) . '</div>';
-                echo '</div>';
-                echo '<div class="survey-right">';
-                echo '<div>Open</div>';
-                echo '<div>Credits: ' . $row['credit'] . '</div>';
-                echo '<div>Responses: 0 / ' . $row['max_responses'] . '</div>';
-                echo '<div>Time: ' . $row['time_minutes'] . ' min</div>';
-                echo '</div>';
-                echo '</li>';
-            }
+        while ($row = mysqli_fetch_assoc($available_surveys_res)) {
+            echo '<li class="survey-item">';
+            echo '<div class="survey-left">';
+            echo '<div class="survey-title">' . htmlspecialchars($row['title']) . '</div>';
+            echo '<div class="muted">' . htmlspecialchars($row['subtitle']) . '</div>';
+            echo '</div>';
+            echo '<div class="survey-right">';
+            echo '<div>Open</div>';
+            echo '<div>Credits: ' . $row['credit'] . '</div>';
+            echo '<div>Responses: 0 / ' . $row['max_responses'] . '</div>';
+            echo '<div>Time: ' . $row['time_minutes'] . ' min</div>';
+            echo '</div>';
+            echo '</li>';
         }
         ?>
-
       </ul>
     </div>
 
-    <!-- ================= MY SURVEYS ================= -->
     <div class="card">
       <h2>My Surveys</h2>
       <div class="muted">Surveys created by you.</div>
@@ -161,7 +147,6 @@ $available_surveys_res = mysqli_query(
         <?php
         if (mysqli_num_rows($my_surveys_res) > 0) {
             while ($row = mysqli_fetch_assoc($my_surveys_res)) {
-
                 echo '<li class="survey-item">';
                 echo '<div class="survey-left">';
                 echo '<div class="survey-title">' . htmlspecialchars($row['title']) . '</div>';
@@ -176,9 +161,7 @@ $available_surveys_res = mysqli_query(
                 echo '</li>';
             }
         } else {
-            echo '<li class="survey-item">';
-            echo '<div class="muted">No surveys created yet</div>';
-            echo '</li>';
+            echo '<li class="survey-item"><div class="muted">No surveys created yet</div></li>';
         }
         ?>
       </ul>
@@ -186,13 +169,10 @@ $available_surveys_res = mysqli_query(
 
   </div>
 
-  <!-- ================= RIGHT COLUMN ================= -->
   <div class="right-col">
 
     <div class="card">
       <h2>Submit Survey</h2>
-      <div class="muted">Use this section to post your own survey.</div>
-
       <form method="post">
 
         <label>Title</label>
@@ -226,12 +206,8 @@ $available_surveys_res = mysqli_query(
 
     <div class="card credit-box">
       <div class="credit-row">
-        <div class="credit-text">
-          Total Credits: 20
-        </div>
-        <button class="btn transfer-btn">
-          Transfer Credits
-        </button>
+        <div class="credit-text">Total Credits: 20</div>
+        <button class="btn transfer-btn">Transfer Credits</button>
       </div>
     </div>
 

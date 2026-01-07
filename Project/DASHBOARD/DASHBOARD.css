@@ -1,135 +1,135 @@
+* {
+  box-sizing: border-box;
+}
 
-    * { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f3fb;
+  color: #0b1020;
+}
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f5f3fb;
-      color: #0b1020;
-    }
+header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 30px;
+  background: #7b6cf6;
+  color: white;
+}
 
-    header {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 15px 30px;
-    background: #7b6cf6;
-    color: white;
-   }
+#btn {
+  background: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
 
-   #btn {
-    background: white;
-    border: none;
-    padding: 6px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-  }
+#logout {
+  margin-left: auto;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
 
-    main {
-      width: 1100px;
-      max-width: 95%;
-      margin: 20px auto;
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-    }
 
-    .left-col { flex: 1; }
-    .right-col { width: 340px; }
+main {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
 
-    .card {
-      background: #ffffff;
-      border-radius: 12px;
-      padding: 14px;
-      box-shadow: 0 8px 20px rgba(92,61,196,0.08);
-      margin-bottom: 16px;
-    }
+.left-col {
+  flex: 1;
+}
 
-    .card h2 {
-      margin: 0 0 6px 0;
-      font-size: 1.05rem;
-    }
+.right-col {
+  width: 340px;
+}
 
-    .muted {
-      color: #6b6b7a;
-      font-size: 0.95rem;
-      margin-bottom: 12px;
-    }
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 14px;
+  box-shadow: 0 8px 20px rgba(92,61,196,0.08);
+  margin-bottom: 16px;
+}
 
-    .survey-list {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
+.card h2 {
+  margin: 0 0 6px;
+}
 
-    .survey-item {
-      display: flex;
-      gap: 12px;
-      padding: 12px;
-      border-radius: 10px;
-      border: 1px solid #eee;
-      margin-bottom: 10px;
-      align-items: flex-start;
-    }
+.muted {
+  color: #6b6b7a;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
 
-    .survey-left { flex: 1; }
+.survey-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 
-    .survey-title {
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
+.survey-item {
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #eee;
+  margin-bottom: 10px;
+}
 
-    .survey-right {
-      text-align: right;
-      font-size: 0.85rem;
-      color: #6b6b7a;
-      line-height: 1.5;
-      min-width: 140px;
-    }
+.survey-left {
+  flex: 1;
+}
 
-    label {
-      display: block;
-      margin-top: 8px;
-      font-size: 0.9rem;
-    }
+.survey-title {
+  font-weight: bold;
+}
 
-    input {
-      width: 100%;
-      padding: 8px;
-      margin-top: 4px;
-      border-radius: 6px;
-      border: 1px solid #e8e6ff;
-    }
+.survey-right {
+  text-align: right;
+  font-size: 0.85rem;
+  color: #6b6b7a;
+}
 
-    .actions {
-      display: flex;
-      justify-content: flex-end;
-      gap: 8px;
-      margin-top: 12px;
-    }
+label {
+  font-size: 0.85rem;
+}
 
-    .btn {
-      padding: 8px 12px;
-      border-radius: 6px;
-      font-weight: bold;
-      cursor: pointer;
-      border: none;
-    }
+input {
+  width: 100%;
+  padding: 8px;
+  margin: 4px 0 10px;
+  border-radius: 6px;
+  border: 1px solid #e8e6ff;
+}
 
-    .btn.primary {
-      background: #6c5ce7;
-      color: white;
-    }
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
 
-    .btn.ghost {
-      background: transparent;
-      border: 1px solid #ddd;
-      color: #6c5ce7;
-    }
-/* ===== CREDIT SECTION ===== */
+.btn {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
 
-.credit-box {
-  margin-top: 20px;
+.btn.primary {
+  background: #6c5ce7;
+  color: white;
+}
+
+.btn.ghost {
+  background: transparent;
+  border: 1px solid #ddd;
+  color: #6c5ce7;
 }
 
 .credit-row {
@@ -138,21 +138,12 @@
   align-items: center;
 }
 
-.credit-text {
-  font-size: 16px;
-  font-weight: bold;
-  color: #444;
-}
-
 .transfer-btn {
-  background-color: #6c5ce7;
+  background: #6c5ce7;
   color: white;
-  border: none;
-  padding: 10px 14px;
   border-radius: 6px;
-  cursor: pointer;
+  padding: 8px 12px;
 }
-
-.transfer-btn:hover {
-  opacity: 0.9;
+.card {
+  overflow: visible;
 }
