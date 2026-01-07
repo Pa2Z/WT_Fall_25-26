@@ -64,10 +64,8 @@ $available_surveys_res = mysqli_query(
 <body>
 
 <header>
-  <button id="btn">← Back</button>
+  <button id="btn"><a href="../Userlogin/userlogin.php">Logout</a></button>
   <h2>NeedSurveyResponses</h2>
-
-  <a href="../Userlogin/userlogin.php" id="logout">Logout</a>
 </header>
 
 <main>
@@ -80,7 +78,6 @@ $available_surveys_res = mysqli_query(
 
       <ul class="survey-list">
 
-        <!-- DEFAULT SURVEYS -->
         <li class="survey-item">
           <div class="survey-left">
             <div class="survey-title"><a href="../Surveyviewpage/surveyviewpage.php?id=1001">

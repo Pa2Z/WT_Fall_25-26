@@ -58,10 +58,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
 
 <header>
-  <div class="nav">
-    <div class="logo"></div>
-    <div class="site-name">NeedSurveyResponses</div>
-  </div>
+  <button id="btn"><a href="../Userlogin/userlogin.php">Logout</a></button>
+  <h2>NeedSurveyResponses</h2>
 </header>
 
 <main>

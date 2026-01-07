@@ -7,7 +7,6 @@ if (!isset($_GET['id'])) {
 
 $id = (int)$_GET['id'];
 
-/* ===== DEFAULT SURVEYS (HARDCODED) ===== */
 $default_surveys = [
     1001 => [
         "title" => "An Analytical Study on Digital Learning Adaptation",
@@ -40,13 +39,11 @@ $default_surveys = [
         "link" => "https://forms.gle/examplelink"
     ]
 ];
-
-/* ===== CHECK DEFAULT SURVEY ===== */
 if (isset($default_surveys[$id])) {
     $survey = $default_surveys[$id];
 } else {
 
-    /* ===== FETCH FROM DATABASE ===== */
+    
     $res = mysqli_query($conn, "SELECT * FROM surveys WHERE id = $id");
     if (mysqli_num_rows($res) !== 1) {
         die("Survey not found");
@@ -77,10 +74,8 @@ if (isset($default_surveys[$id])) {
 <body>
 
 <header>
-  <div class="nav">
-    <div class="logo"></div>
-    <div class="site-name">NeedSurveyResponses</div>
-  </div>
+  <button id="btn"><a href="../Userlogin/userlogin.php">Logout</a></button>
+  <h2>NeedSurveyResponses</h2>
 </header>
 
 <main>
