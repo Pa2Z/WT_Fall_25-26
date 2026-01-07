@@ -12,6 +12,7 @@ $uid = $_SESSION['user_id'];
 $error = "";
 $success = "";
 
+/* ===== SUBMIT SURVEY ===== */
 if (isset($_POST['publish'])) {
 
     $title = $_POST['title'];
@@ -44,6 +45,7 @@ if (isset($_POST['publish'])) {
     }
 }
 
+/* ===== FETCH SURVEYS ===== */
 $my_surveys_res = mysqli_query(
     $conn,
     "SELECT * FROM surveys WHERE user_id = $uid ORDER BY id DESC"
@@ -73,11 +75,60 @@ $available_surveys_res = mysqli_query(
 
   <div class="left-col">
 
+    <!-- ================= AVAILABLE SURVEYS ================= -->
     <div class="card">
       <h2>Available Surveys</h2>
       <div class="muted">Surveys posted by other participants.</div>
 
       <ul class="survey-list">
+
+        <!-- ===== DEFAULT SURVEYS (ALWAYS VISIBLE) ===== -->
+
+        <li class="survey-item">
+          <div class="survey-left">
+            <div class="survey-title">
+              <a href="../Surveyviewpage/surveyviewpage.php" style="color: inherit; text-decoration: none;">
+                An Analytical Study on Digital Learning Adaptation
+              </a>
+            </div>
+            <div class="muted">Exploring student adjustment trends</div>
+          </div>
+          <div class="survey-right">
+            <div>12 Q • Open</div>
+            <div>Credits: 5</div>
+            <div>Responses: 7 / 10</div>
+            <div>Time: 2 min</div>
+          </div>
+        </li>
+
+        <li class="survey-item">
+          <div class="survey-left">
+            <div class="survey-title">Investigating Cognitive Load in Remote Education</div>
+            <div class="muted">Measuring task complexity factors</div>
+          </div>
+          <div class="survey-right">
+            <div>10 Q • Open</div>
+            <div>Credits: 4</div>
+            <div>Responses: 5 / 10</div>
+            <div>Time: 3 min</div>
+          </div>
+        </li>
+
+        <li class="survey-item">
+          <div class="survey-left">
+            <div class="survey-title">Evaluating Usability Metrics of Academic Platforms</div>
+            <div class="muted">User experience indicators</div>
+          </div>
+          <div class="survey-right">
+            <div>8 Q • Closed</div>
+            <div>Credits: 3</div>
+            <div>Responses: 10 / 10</div>
+            <div>Time: 1 min</div>
+          </div>
+        </li>
+
+        <!-- ===== DYNAMIC AVAILABLE SURVEYS (FROM OTHER USERS) ===== -->
+
         <?php
         if (mysqli_num_rows($available_surveys_res) > 0) {
             while ($row = mysqli_fetch_assoc($available_surveys_res)) {
@@ -95,15 +146,13 @@ $available_surveys_res = mysqli_query(
                 echo '</div>';
                 echo '</li>';
             }
-        } else {
-            echo '<li class="survey-item">';
-            echo '<div class="muted">No available surveys</div>';
-            echo '</li>';
         }
         ?>
+
       </ul>
     </div>
 
+    <!-- ================= MY SURVEYS ================= -->
     <div class="card">
       <h2>My Surveys</h2>
       <div class="muted">Surveys created by you.</div>
@@ -137,6 +186,7 @@ $available_surveys_res = mysqli_query(
 
   </div>
 
+  <!-- ================= RIGHT COLUMN ================= -->
   <div class="right-col">
 
     <div class="card">
